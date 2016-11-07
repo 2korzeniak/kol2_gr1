@@ -37,5 +37,5 @@ d = SchoolDiary("2016")
 d.add_students([student1,student2])
 d.print_studs()
 
-std = d.get_student("Andrzej", "Duda").average().sub_average("Religia").add_attendance("Religia", 5)
-std.print_attend()
+d.get_student("Andrzej", "Duda").average().sub_average("Religia").add_attendance("Religia", 5)
+d.get_student("Andrzej", "Duda").print_attend()

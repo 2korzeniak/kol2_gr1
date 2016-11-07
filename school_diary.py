@@ -16,7 +16,6 @@ class SchoolDiary(object):
         
     def get_student(self, fname, lname):
         for stud in self.students:
-            #if stud.fname == fname and stud.lname == lname :
             print "\nStudent:"
             print(stud)
             return stud
