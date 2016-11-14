@@ -1,7 +1,9 @@
 from sub import Subjects
-
+from numbers import Number
+import numpy
 
 class Students(object):
+    """Student class"""
     def __init__(self,fname,lname):
         self.__fname = fname
         self.__lname = lname
@@ -13,24 +15,28 @@ class Students(object):
         return self.__fname + " " + self.__lname
         
     def add_subject_to_stud(self, subjects):
+        """Adds subject to student"""
         for s in subjects:
             if not isinstance(s,Subjects):
                 return
         self.subjects.extend(subjects)
     
     def add_grade(self, subject, grade):
+        """Adds new grade to student"""
         if subject in self.grade.keys():
             self.grade[subject].extend(grade)
         else:
             self.grade[subject] = grade
             
     def add_attendance(self, subject, count):
+        """Adds attendace to student"""
         if subject in self.attend.keys():
             self.attend[subject] += count
         else:
             self.attend[subject] = count
             
     def average(self):
+        """Computes total average"""
         avg, count = 0, 0
         for i in self.grade:
             for j in self.grade[i]:
@@ -41,28 +47,13 @@ class Students(object):
         return self
         
     def sub_average(self, subject):
-        avg, count = 0, 0
-        for j in self.grade[subject]:
-            avg += j
-            count += 1
-            print(subject + " avarage is: " + str(avg/count))        
+        """Computes subject average"""
+        avg = numpy.mean(self.grade[subject])
+        print(subject + " avarage is: " + str(avg))        
         return self
-    
-    def print_subjects(self):
-        print "Student's subjects:"
-        print "\n".join(str(s) for s in self.subjects)
-        return self 
-
-    def print_grade(self):
-        print "\nGrades of:"
-        print self
-        for i in self.grade:
-			print i + ": "
-        for y in self.grade[i]:
-            print(y)
-        return self
-	
+        
     def print_attend(self):
+        """Prints student's attendace"""
         print("\nAttendance:")
         for i in self.attend:
             print(i + ": " + str(self.attend[i]))
